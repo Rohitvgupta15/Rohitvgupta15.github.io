@@ -582,8 +582,49 @@
       <section id="tab-portfolio" class="tab-pane active">
         <h1 class="page__title">Featured Hardware &amp; Embedded Projects</h1>
         <p>A collection of FPGA implementations, cryptographic engines, microprocessor architectures, and robotics systems.</p>
+        
 
-        <!-- Project 1: APB Protocol -->
+        <!-- Project 1: ONN on FPGA -->
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="javascript:void(0)">Design and Implementation of Oscillatory Neural Network on FPGA</a>
+          </h2>
+          <div class="archive__item-published">
+            Under the guidance of <em>Prof. Sandip Laskare</em> &bull; IIT Gandhinagar [Dec '25 – Jul '26]
+          </div>
+          <div class="archive__item-excerpt">
+            <p>Developed an Oscillatory Neural Network (ONN) on the Zybo Z7-20 (Zynq-7020 PS/PL) for low-power, high-speed pattern recognition.</p>
+            <ul>
+              <li>Implemented parallel hardware computation on FPGA fabric for high throughput and minimal latency classification.</li>
+              <li>Built a custom bootable image and driver stack with PetaLinux for efficient hardware-software co-design.</li>
+            </ul>
+          </div>
+          <div class="archive__item-links">
+            <a href="https://github.com/Rohitvgupta15/ONN-PetaLinux-FPGA" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Project Repository</a>
+          </div>
+        </article>
+
+        <!-- Project 2: 5-Stage RISC-V -->
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="javascript:void(0)">5-Stage Pipelined RISC-V Processor</a>
+          </h2>
+          <div class="archive__item-published">
+            Under the guidance of <em>Prof. Joycee Mekie</em> &bull; IIT Gandhinagar [Jan '26 – May '26]
+          </div>
+          <div class="archive__item-excerpt">
+            <p>Designed a 5-stage pipelined RISC-V processor in SystemVerilog (Fetch, Decode, Execute, Memory, Writeback).</p>
+            <ul>
+              <li>Integrated forwarding units and hazard detection logic to resolve data, control, and structural hazards with minimal stalls.</li>
+              <li>Built comprehensive SystemVerilog testbenches to verify instruction execution flow and pipeline timing accuracy.</li>
+            </ul>
+          </div>
+          <div class="archive__item-links">
+            <a href="https://github.com/Rohitvgupta15/RISC-V-5-Stage-Pipelined-Processor" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Project Repository</a>
+          </div>
+        </article>
+        
+         <!-- Project 3: APB Protocol -->
         <article class="archive__item">
           <h2 class="archive__item-title">
             <a href="APB_PROTOCOL_REPORT.pdf" target="_blank" rel="noopener">Design and Implementation of the APB Protocol on FPGA</a>
@@ -602,12 +643,12 @@
           </div>
           <div class="archive__item-links">
             <a href="APB_PROTOCOL_REPORT.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> View Project Report (PDF)</a> | 
-            <a href="https://github.com/Rohitvgupta15" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub Source</a>
+            <a href="https://github.com/Rohitvgupta15/APB-Protocol-Module" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub Source</a>
           </div>
         </article>
-
-        <!-- Project 2: AES-128 UART -->
-        <article class="archive__item">
+        
+        <!-- Project 4: AES-128 UART -->
+       <article class="archive__item">
           <h2 class="archive__item-title">
             <a href="AES_uart_project_report.pdf" target="_blank" rel="noopener">Hardware Implementation of AES-128 Algorithm for Secure UART Communication</a>
           </h2>
@@ -624,50 +665,10 @@
           </div>
           <div class="archive__item-links">
             <a href="AES_uart_project_report.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> View Project Report (PDF)</a> | 
-            <a href="https://github.com/Rohitvgupta15" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub Source</a>
+            <a href="https://github.com/Rohitvgupta15/AES-UART-FPGA" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub Source</a>
           </div>
         </article>
-
-        <!-- Project 3: ONN on FPGA -->
-        <article class="archive__item">
-          <h2 class="archive__item-title">
-            <a href="javascript:void(0)">Design and Implementation of Oscillatory Neural Network on FPGA</a>
-          </h2>
-          <div class="archive__item-published">
-            Under the guidance of <em>Prof. Sandip Laskare</em> &bull; IIT Gandhinagar [Dec '25 – Jul '26]
-          </div>
-          <div class="archive__item-excerpt">
-            <p>Developed an Oscillatory Neural Network (ONN) on the Zybo Z7-20 (Zynq-7020 PS/PL) for low-power, high-speed pattern recognition.</p>
-            <ul>
-              <li>Implemented parallel hardware computation on FPGA fabric for high throughput and minimal latency classification.</li>
-              <li>Built a custom bootable image and driver stack with PetaLinux for efficient hardware-software co-design.</li>
-            </ul>
-          </div>
-          <div class="archive__item-links">
-            <a href="https://github.com/Rohitvgupta15" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Project Repository</a>
-          </div>
-        </article>
-
-        <!-- Project 4: 5-Stage RISC-V -->
-        <article class="archive__item">
-          <h2 class="archive__item-title">
-            <a href="javascript:void(0)">5-Stage Pipelined RISC-V Processor</a>
-          </h2>
-          <div class="archive__item-published">
-            Under the guidance of <em>Prof. Joycee Mekie</em> &bull; IIT Gandhinagar [Jan '26 – May '26]
-          </div>
-          <div class="archive__item-excerpt">
-            <p>Designed a 5-stage pipelined RISC-V processor in SystemVerilog (Fetch, Decode, Execute, Memory, Writeback).</p>
-            <ul>
-              <li>Integrated forwarding units and hazard detection logic to resolve data, control, and structural hazards with minimal stalls.</li>
-              <li>Built comprehensive SystemVerilog testbenches to verify instruction execution flow and pipeline timing accuracy.</li>
-            </ul>
-          </div>
-          <div class="archive__item-links">
-            <a href="https://github.com/Rohitvgupta15" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Project Repository</a>
-          </div>
-        </article>
-
+        
         <!-- Project 5: Robotic Arm ROS -->
         <article class="archive__item">
           <h2 class="archive__item-title">
