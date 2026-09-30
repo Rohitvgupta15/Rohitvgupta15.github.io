@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rohit Gupta | Integrated Circuit Design & Digital Systems</title>
+  
+  <!-- Font Awesome 6 for exact academic and social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    /* AcademicPages / Minimal Mistakes core design tokens */
+    :root {
+      --global-bg-color: #ffffff;
+      --code-bg-color: #f2f3f3;
+      --text-color: #3b3d40;
+      --text-heading: #24292e;
+      --muted-text-color: #494e52;
+      --light-text-color: #7a8288;
+      --border-color: #f2f3f3;
+      --border-light: #ececec;
+      --border-nav: #e8e8e8;
+      --link-color: #348498;
+      --link-color-hover: #235967;
+      --nav-underline: #3b3d40;
+      --orcid-color: #a6ce39;
+      --rss-color: #fa9b39;
+      --font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
+      --font-family-serif: Georgia, Times, serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      overflow-y: scroll;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--global-bg-color);
+      color: var(--text-color);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: var(--link-color);
+      text-decoration: underline;
+      transition: color 0.1s ease-in-out;
+    }
+
+    a:hover {
+      color: var(--link-color-hover);
+    }
+
+    /* Top Masthead / Navigation */
+    .masthead {
+      border-bottom: 1px solid var(--border-nav);
+      background-color: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .masthead__inner-wrap {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0.95rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .site-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #343434;
+      text-decoration: none;
+      letter-spacing: -0.015em;
+    }
+
+    .site-title:hover {
+      color: #111111;
+      text-decoration: none;
+    }
+
+    .masthead__menu {
+      display: flex;
+      align-items: center;
+    }
+
+    .visible-links {
+      display: flex;
+      list-style: none;
+      gap: 1.85rem;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .masthead__menu-item button {
+      background: none;
+      border: none;
+      outline: none;
+      font-family: var(--font-family);
+      font-size: 1.05rem;
+      color: #494e52;
+      font-weight: 400;
+      cursor: pointer;
+      padding-bottom: 0.35rem;
+      border-bottom: 3px solid transparent;
+      transition: all 0.15s ease-in-out;
+      text-decoration: none;
+    }
+
+    .masthead__menu-item button:hover {
+      color: #111111;
+    }
+
+    .masthead__menu-item button.active {
+      color: #24292e;
+      font-weight: 700;
+      border-bottom: 3px solid var(--nav-underline);
+    }
+
+    /* Page Container */
+    #main {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 2.75rem 2rem 5rem 2rem;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      column-gap: 3.5rem;
+      align-items: start;
+    }
+
+    /* Left Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 5rem;
+    }
+
+    .author__avatar {
+      display: block;
+      width: 180px;
+      height: 180px;
+      margin-bottom: 1.25rem;
+    }
+
+    .avatar-circle {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background-color: #ffffff;
+      border: 1px solid #e1e4e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .author__content {
+      margin-bottom: 1.25rem;
+    }
+
+    .author__name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #2b2b2b;
+      margin-bottom: 0.35rem;
+      line-height: 1.25;
+    }
+
+    .author__bio {
+      font-size: 0.95rem;
+      color: #55595c;
+      line-height: 1.45;
+      margin-bottom: 0.75rem;
+    }
+
+    .author__urls-wrapper {
+      padding-top: 0.35rem;
+    }
+
+    .author__urls {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      font-size: 0.95rem;
+    }
+
+    .author__urls li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #494e52;
+    }
+
+    .author__urls .fa-fw,
+    .author__urls i {
+      width: 1.15rem;
+      text-align: center;
+      color: #586069;
+      font-size: 0.95rem;
+    }
+
+    .author__urls a {
+      color: #494e52;
+      text-decoration: none;
+    }
+
+    .author__urls a:hover {
+      text-decoration: underline;
+      color: var(--link-color);
+    }
+
+    /* Main Content Area */
+    .page__content {
+      min-width: 0;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+      animation: tabFadeIn 0.15s ease-out;
+    }
+
+    @keyframes tabFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    h1.page__title {
+      font-size: 2.15rem;
+      font-weight: 700;
+      color: #24292e;
+      margin-top: 0;
+      margin-bottom: 1.15rem;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+    }
+
+    h2.section__title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #24292e;
+      margin-top: 2rem;
+      margin-bottom: 1.15rem;
+      letter-spacing: -0.01em;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 0.4rem;
+    }
+
+    .page__content p {
+      margin-bottom: 1.2rem;
+      color: #3b3d40;
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    /* Publication & Project Item Blocks */
+    .archive__item {
+      margin-bottom: 2.5rem;
+    }
+
+    .archive__item-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+      line-height: 1.3;
+    }
+
+    .archive__item-title a {
+      color: var(--link-color);
+      text-decoration: underline;
+    }
+
+    .archive__item-title a:hover {
+      color: var(--link-color-hover);
+    }
+
+    .archive__item-published {
+      color: #6a737d;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .archive__item-published em {
+      font-style: normal;
+      color: #24292e;
+      font-weight: 600;
+    }
+
+    .archive__item-excerpt {
+      margin-bottom: 0.75rem;
+      font-size: 1rem;
+      color: #3b3d40;
+    }
+
+    .archive__item-excerpt ul {
+      margin-left: 1.25rem;
+      margin-top: 0.35rem;
+      line-height: 1.55;
+    }
+
+    .archive__item-links {
+      font-size: 0.95rem;
+      color: #586069;
+      font-weight: 500;
+    }
+
+    .archive__item-links a {
+      color: var(--link-color);
+      text-decoration: underline;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .badge-pill {
+      display: inline-block;
+      padding: 0.15rem 0.6rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background-color: #f1f8ff;
+      color: #0366d6;
+      border-radius: 12px;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* Skills List Styling */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    .skill-card {
+      background: #fafbfc;
+      border: 1px solid #e1e4e8;
+      border-radius: 6px;
+      padding: 1.1rem;
+    }
+
+    .skill-card h3 {
+      font-size: 1.05rem;
+      color: #24292e;
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-card p {
+      font-size: 0.95rem;
+      color: #586069;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    /* Footer styling */
+    .page__footer {
+      border-top: 1px solid var(--border-light);
+      background-color: #ffffff;
+      padding-top: 2.25rem;
+      padding-bottom: 3.5rem;
+      color: var(--light-text-color);
+      font-size: 0.95rem;
+    }
+
+    .page__footer-inner {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .page__footer-follow {
+      display: flex;
+      align-items: center;
+      gap: 1.1rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #494e52;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+
+    .page__footer-follow a {
+      color: #494e52;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .page__footer-follow a:hover {
+      color: #111111;
+      text-decoration: underline;
+    }
+
+    .page__footer-copyright {
+      font-size: 0.82rem;
+      color: #7a8288;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      #main {
+        grid-template-columns: 1fr;
+        padding-top: 1.5rem;
+        column-gap: 0;
+      }
+
+      .sidebar {
+        position: static;
+        margin-bottom: 2.5rem;
+        border-bottom: 1px solid var(--border-light);
+        padding-bottom: 2rem;
+      }
+
+      .masthead__inner-wrap {
+        padding: 0.75rem 1.25rem;
+      }
+
+      .visible-links {
+        gap: 1rem;
+        overflow-x: auto;
+        padding-top: 0.5rem;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Masthead Navigation Bar -->
+  <header class="masthead">
+    <div class="masthead__inner-wrap">
+      <a class="site-title" href="javascript:void(0)" onclick="switchTab('portfolio')">
+        Rohit Gupta
+      </a>
+      <nav class="masthead__menu">
+        <ul class="visible-links">
+          <li class="masthead__menu-item">
+            <button class="nav-tab active" data-tab="portfolio" onclick="switchTab('portfolio')">Projects</button>
+          </li>
+          <li class="masthead__menu-item">
+            <button class="nav-tab" data-tab="experience" onclick="switchTab('experience')">Experience</button>
+          </li>
+          <li class="masthead__menu-item">
+            <button class="nav-tab" data-tab="publications" onclick="switchTab('publications')">Publications & Reports</button>
+          </li>
+          <li class="masthead__menu-item">
+            <button class="nav-tab" data-tab="teaching" onclick="switchTab('teaching')">Teaching</button>
+          </li>
+          <li class="masthead__menu-item">
+            <button class="nav-tab" data-tab="cv" onclick="switchTab('cv')">CV</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div id="main">
+    
+    <!-- Left Sidebar: Author Profile -->
+    <aside class="sidebar">
+      <div class="author__avatar">
+        <div class="avatar-circle">
+          <!-- Placeholder avatar: replace src with your photo file if desired -->
+          <svg width="116" height="116" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="48" fill="#eef0f2" />
+            <circle cx="50" cy="38" r="19" fill="#a4adb4" />
+            <path d="M19 86.5C19 72.4167 32.8782 61 50 61C67.1218 61 81 72.4167 81 86.5V90H19V86.5Z" fill="#a4adb4" />
+          </svg>
+        </div>
+      </div>
+
+      <div class="author__content">
+        <h3 class="author__name">Rohit Gupta</h3>
+        <p class="author__bio">Postgraduate Student in Integrated Circuit Design &amp; Technology at IIT Gandhinagar &amp; NCKU Taiwan.</p>
+      </div>
+
+      <div class="author__urls-wrapper">
+        <ul class="author__urls">
+          <li>
+            <i class="fa-solid fa-location-dot fa-fw"></i>
+            <span>Gandhinagar, India / Tainan, Taiwan</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-building-columns fa-fw"></i>
+            <span>IITGN &bull; NCKU</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-envelope fa-fw"></i>
+            <a href="mailto:rohit.gupta@iitgn.ac.in">rohit.gupta@iitgn.ac.in</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone fa-fw"></i>
+            <span>+91 9974743663</span>
+          </li>
+          <li>
+            <i class="fa-brands fa-linkedin fa-fw"></i>
+            <a href="https://www.linkedin.com/in/rohitgupta15/" target="_blank" rel="noopener">rohitgupta15</a>
+          </li>
+          <li>
+            <i class="fa-brands fa-github fa-fw"></i>
+            <a href="https://github.com/Rohitvgupta15" target="_blank" rel="noopener">Rohitvgupta15</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="page__content">
+      
+      <!-- ================= 1. PORTFOLIO / PROJECTS ================= -->
+      <section id="tab-portfolio" class="tab-pane active">
+        <h1 class="page__title">Featured Hardware &amp; Embedded Projects</h1>
+        <p>A collection of FPGA implementations, cryptographic engines, microprocessor architectures, and robotics systems.</p>
+
+        <!-- Project 1: APB Protocol -->
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="APB_PROTOCOL_REPORT.pdf" target="_blank" rel="noopener">Design and Implementation of the APB Protocol on FPGA</a>
+            <span class="badge-pill">Industry Project</span>
+          </h2>
+          <div class="archive__item-published">
+            Under the guidance of <em>Dr. Tanmay D. Pawar (BVM)</em> &bull; Industry Mentors: <em>Ashishkumar Christian &amp; Maitri Patel (eInfochips)</em>
+          </div>
+          <div class="archive__item-excerpt">
+            <p>Designed and verified an AMBA-compliant Advanced Peripheral Bus (APB v2.0) interface using Verilog HDL, mapped onto the Digilent Artix-7 Nexys 4 FPGA platform.</p>
+            <ul>
+              <li>Architected master-slave transaction logic supporting zero-wait-state transfers, wait-state insertions via <code>PREADY</code>, and error signaling via <code>PSLVERR</code>.</li>
+              <li>Integrated and evaluated three memory-mapped peripheral slaves: 256x8 RAM block, 7-Segment display controller, and UART serial communication engine.</li>
+              <li>Validated comprehensive test suites in Vivado including back-to-back operations, 5x burst access, asynchronous resets, and unauthorized address access.</li>
+            </ul>
+          </div>
+          <div class="archive__item-links">
+            <a href="APB_PROTOCOL_REPORT.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> View Project Report (PDF)</a> | 
+            <a href="https://github.com/Rohitvgupta15" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub Source</a>
+          </div>
+        </article>
+
+        <!-- Project 2: AES-128 UART -->
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="AES_uart_project_report.pdf" target="_blank" rel="noopener">Hardware Implementation of AES-128 Algorithm for Secure UART Communication</a>
+          </h2>
+          <div class="archive__item-published">
+            Under the guidance of <em>Prof. Anita Bhatt</em> &bull; Birla Vishvakarma Mahavidyalaya
+          </div>
+          <div class="archive__item-excerpt">
+            <p>Implemented a hardware cryptographic subsystem integrating a 128-bit Advanced Encryption Standard (AES) cipher pipeline directly into serial UART transceivers.</p>
+            <ul>
+              <li>Synthesized complete AES encryption and decryption engines (Key Expansion, SubBytes, ShiftRows, MixColumns, and Inverses) using Verilog HDL.</li>
+              <li>Integrated 128-bit SIPO and PISO conversion stages to bridge byte-oriented 8-bit UART streams with parallel 128-bit cryptographic states.</li>
+              <li>Demonstrated real-time dual-board communication across two Digilent Basys 3 (Xilinx Artix-7) FPGA boards, achieving low latency and secure end-to-end data transfer.</li>
+            </ul>
+          </div>
+          <div class="archive__item-links">
+            <a href="AES_uart_project_report.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> View Project Report (PDF)</a> | 
+            <a href="https://github.com/Rohitvgupta15" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub Source</a>
+          </div>
+        </article>
+
+        <!-- Project 3: ONN on FPGA -->
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="javascript:void(0)">Design and Implementation of Oscillatory Neural Network on FPGA</a>
+          </h2>
+          <div class="archive__item-published">
+            Under the guidance of <em>Prof. Sandip Laskare</em> &bull; IIT Gandhinagar [Dec 2025 – Jul 2026]
+          </div>
+          <div class="archive__item-excerpt">
+            <p>Developed an energy-efficient neuromorphic Oscillatory Neural Network (ONN) on the AMD/Xilinx Zybo Z7-20 (Zynq-7020 SoC) for fast, low-power pattern recognition.</p>
+            <ul>
+              <li>Implemented parallel coupled oscillator pipelines in FPGA fabric (PL) to accelerate matrix-based associative memory classification.</li>
+              <li>Integrated PS-PL co-design via AXI interfaces running custom Linux boot images and driver stacks built with PetaLinux.</li>
+            </ul>
+          </div>
+          <div class="archive__item-links">
+            <a href="https://github.com/Rohitvgupta15" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Project Repository</a>
+          </div>
+        </article>
+
+        <!-- Project 4: 5-Stage RISC-V -->
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="javascript:void(0)">5-Stage Pipelined RISC-V Processor</a>
+          </h2>
+          <div class="archive__item-published">
+            Under the guidance of <em>Prof. Joycee Mekie</em> &bull; IIT Gandhinagar [Jan 2026 – May 2026]
+          </div>
+          <div class="archive__item-excerpt">
+            <p>Designed a synthesizable 32-bit 5-stage pipelined RISC-V processor in SystemVerilog (Fetch, Decode, Execute, Memory, Writeback).</p>
+            <ul>
+              <li>Engineered advanced forwarding logic and hazard detection units to resolve data, control, and structural hazards with minimal pipeline bubbles.</li>
+              <li>Constructed modular SystemVerilog testbenches verifying instruction sequencing, branch resolution, and cycle-accurate execution.</li>
+            </ul>
+          </div>
+          <div class="archive__item-links">
+            <a href="https://github.com/Rohitvgupta15" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Project Repository</a>
+          </div>
+        </article>
+
+        <!-- Project 5: Robotic Arm ROS -->
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="robotic_arm_ros-1.pdf" target="_blank" rel="noopener">5-DOF with Gripper Robotic Arm Using Robot Operating System (ROS)</a>
+          </h2>
+          <div class="archive__item-published">
+            Under the guidance of <em>Dr. Kaushika Patel &amp; Dr. T.D. Pawar</em> &bull; BVM [2022 – 2023]
+          </div>
+          <div class="archive__item-excerpt">
+            <p>Constructed an articulated 5-DOF robotic manipulator and gripper arm integrated with ROS Noetic, MoveIt, RViz, and an Arduino-driven actuator interface.</p>
+            <ul>
+              <li>Converted Autodesk Fusion 360 CAD kinematics into Unified Robot Description Format (URDF) configurations.</li>
+              <li>Configured MoveIt motion planning and inverse kinematics pipelines to execute collision-free pick-and-place trajectories in Python.</li>
+            </ul>
+          </div>
+          <div class="archive__item-links">
+            <a href="robotic_arm_ros-1.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> View Project Report (PDF)</a> | 
+            <a href="https://github.com/Rohitvgupta15/5-DOF-ROBOTIC-ARM-WITH-GRIPPER" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub Repository</a>
+          </div>
+        </article>
+
+        <!-- Project 6: Smart Home IoT -->
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="21EL043 &amp; 21EL044(home automation).pdf" target="_blank" rel="noopener">Smart Home Automation with Google Assistant Using NodeMCU ESP8266</a>
+          </h2>
+          <div class="archive__item-published">
+            Under the guidance of <em>Dr. Deepak L. Vala</em> &bull; BVM [2022 – 2023]
+          </div>
+          <div class="archive__item-excerpt">
+            <p>Engineered an IoT home automation platform integrating voice control through Sinric Pro, Google Assistant, and custom PCB switching electronics.</p>
+            <ul>
+              <li>Designed custom schematic and PCB layouts in EasyEDA with opto-isolated relay drivers and power regulation.</li>
+              <li>Built real-time remote control firmware on NodeMCU (ESP8266) supporting cloud webhooks and Android app management.</li>
+            </ul>
+          </div>
+          <div class="archive__item-links">
+            <a href="21EL043 &amp; 21EL044(home automation).pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> View Project Report (PDF)</a>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= 2. WORK EXPERIENCE ================= -->
+      <section id="tab-experience" class="tab-pane">
+        <h1 class="page__title">Work Experience</h1>
+
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="https://www.einfochips.com/" target="_blank" rel="noopener">eInfochips (An Arrow Company)</a>
+            <span class="badge-pill">ASIC Intern</span>
+          </h2>
+          <div class="archive__item-published">
+            <em>Ahmedabad, Gujarat, India</em> &bull; Jan 2025 &ndash; Jun 2025
+          </div>
+          <div class="archive__item-excerpt">
+            <ul>
+              <li>Designed and verified digital IP blocks using Verilog and SystemVerilog targeting standard ASIC design and synthesis flows.</li>
+              <li>Implemented complete AMBA APB Protocol master-slave RTL architecture and state machine control logic for low-latency peripheral communication.</li>
+              <li>Built a modular SystemVerilog verification environment (Generator, Driver, Monitor, Scoreboard) for synchronous FIFO blocks.</li>
+              <li>Achieved 94% functional and code coverage by exhaustively verifying corner cases, boundary conditions, and cross-coverage metrics.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= 3. PUBLICATIONS & REPORTS ================= -->
+      <section id="tab-publications" class="tab-pane">
+        <h1 class="page__title">Technical Reports &amp; Documentation</h1>
+        <p>Detailed project reports and engineering manuscripts covering digital IC design, communication buses, and robotics.</p>
+
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="APB_PROTOCOL_REPORT.pdf" target="_blank" rel="noopener">Design and Implementation of the APB Protocol on FPGA</a>
+          </h2>
+          <div class="archive__item-published">
+            Industry Defined Project Report &bull; Birla Vishvakarma Mahavidyalaya &amp; eInfochips, 2025
+          </div>
+          <p class="archive__item-excerpt">
+            Comprehensive thesis detailing the RTL implementation, finite state machine architecture, slave decode selection, and FPGA synthesis of AMBA APB v2.0 on the Artix-7 Nexys 4 platform.
+          </p>
+          <div class="archive__item-links">
+            <a href="APB_PROTOCOL_REPORT.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> Download Full Report (PDF)</a>
+          </div>
+        </article>
+
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="AES_uart_project_report.pdf" target="_blank" rel="noopener">Implementation of AES-128 Algorithm for Secure UART Communication on Artix-7 FPGA</a>
+          </h2>
+          <div class="archive__item-published">
+            Guided Research Reading Report &bull; Birla Vishvakarma Mahavidyalaya, 2024
+          </div>
+          <p class="archive__item-excerpt">
+            Architectural analysis and hardware implementation report focusing on cipher round parallelization, S-Box substitution tables, and secure UART communication between dual Xilinx Artix-7 Basys 3 boards.
+          </p>
+          <div class="archive__item-links">
+            <a href="AES_uart_project_report.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> Download Full Report (PDF)</a>
+          </div>
+        </article>
+
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="robotic_arm_ros-1.pdf" target="_blank" rel="noopener">5-DOF with Gripper Robotic Arm Using Robot Operating System (ROS)</a>
+          </h2>
+          <div class="archive__item-published">
+            Electronics System Design Laboratory Report &bull; Birla Vishvakarma Mahavidyalaya, 2023
+          </div>
+          <p class="archive__item-excerpt">
+            System architecture documentation covering URDF generation in Autodesk Fusion 360, MoveIt path planning, RQT node computation graphs, and real-time serial hardware control.
+          </p>
+          <div class="archive__item-links">
+            <a href="robotic_arm_ros-1.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> Download Full Report (PDF)</a>
+          </div>
+        </article>
+
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="21EL043 &amp; 21EL044(home automation).pdf" target="_blank" rel="noopener">Smart Home With Google Assistant Using Node MCU8266</a>
+          </h2>
+          <div class="archive__item-published">
+            Mini Project Report &bull; Birla Vishvakarma Mahavidyalaya, 2023
+          </div>
+          <p class="archive__item-excerpt">
+            Technical report discussing IoT cloud integration, Sinric Pro webhook configurations, relay switching schematics, and PCB realization for automated voice-controlled appliances.
+          </p>
+          <div class="archive__item-links">
+            <a href="21EL043 &amp; 21EL044(home automation).pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-pdf"></i> Download Full Report (PDF)</a>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= 4. TEACHING ================= -->
+      <section id="tab-teaching" class="tab-pane">
+        <h1 class="page__title">Teaching Experience</h1>
+
+        <article class="archive__item">
+          <h2 class="archive__item-title">
+            <a href="javascript:void(0)">Digital System Design (Teaching Assistant)</a>
+          </h2>
+          <div class="archive__item-published">
+            Indian Institute of Technology Gandhinagar &bull; Aug 2025 &ndash; Nov 2025
+          </div>
+          <div class="archive__item-excerpt">
+            <ul>
+              <li>Guided 50+ undergraduate students in Verilog HDL programming, FPGA synthesis flows, and hardware debugging.</li>
+              <li>Conducted hands-on laboratory sessions focusing on RTL design methodology, finite state machines (FSMs), and timing logic.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= 5. CV / RESUME ================= -->
+      <section id="tab-cv" class="tab-pane">
+        <h1 class="page__title">Curriculum Vitae</h1>
+        <p><a href="rohit_gupta_resume.pdf" target="_blank" rel="noopener"><i class="fa-solid fa-file-arrow-down"></i> [Download Resume as PDF]</a></p>
+
+        <h2 class="section__title">Education</h2>
+        <p>
+          <strong>M.S. in Integrated Circuit Design</strong> (Double Degree), National Cheng Kung University (NCKU), Tainan, Taiwan<br>
+          <em>2026 &ndash; Present</em>
+        </p>
+        <p>
+          <strong>M.Tech. in Integrated Circuit Design and Technology</strong>, Indian Institute of Technology Gandhinagar, India<br>
+          <em>2025 &ndash; Present &bull; CPI: 7.6</em>
+        </p>
+        <p>
+          <strong>B.Tech. in Electronics Engineering</strong>, Birla Vishvakarma Mahavidyalaya, Gujarat, India<br>
+          <em>2021 &ndash; 2025 &bull; CPI: 9.16</em>
+        </p>
+
+        <h2 class="section__title">Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>HDLs &amp; Verification</h3>
+            <p>SystemVerilog, Verilog HDL, Testbench Development, Code Coverage &amp; Functional Coverage</p>
+          </div>
+          <div class="skill-card">
+            <h3>EDA Tools &amp; Simulators</h3>
+            <p>AMD Xilinx Vivado, Vitis, Synopsys VCS, Cadence Virtuoso, TCAD</p>
+          </div>
+          <div class="skill-card">
+            <h3>Protocols &amp; Arch</h3>
+            <p>AMBA APB, AXI4-Lite, UART, SPI, I2C, RISC-V Architecture</p>
+          </div>
+          <div class="skill-card">
+            <h3>FPGA &amp; Embedded</h3>
+            <p>Zybo Z7-20 (Zynq-7020 SoC), Artix-7 Nexys 4, Basys 3, PetaLinux, ROS</p>
+          </div>
+        </div>
+
+        <h2 class="section__title">Honors &amp; Achievements</h2>
+        <ul>
+          <li><strong>Winner &ndash; National Robotics Competition (Robofest 4.0):</strong> Secured 1st place in the Rover category by developing an autonomous robotic control system.</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Page Footer matching AcademicPages / Minimal Mistakes -->
+  <footer class="page__footer">
+    <div class="page__footer-inner">
+      <div class="page__footer-follow">
+        <span>Follow:</span>
+        <a href="https://github.com/Rohitvgupta15" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://www.linkedin.com/in/rohitgupta15/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+      </div>
+      <div class="page__footer-copyright">
+        &copy; 2026 Rohit Gupta. Powered by <a href="https://academicpages.github.io/" target="_blank" rel="noopener">AcademicPages</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" target="_blank" rel="noopener">Minimal Mistakes</a>.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Tab Navigation Script -->
+  <script>
+    function switchTab(tabName) {
+      // 1. Remove active state from all panes and tab buttons
+      const panes = document.querySelectorAll('.tab-pane');
+      panes.forEach(pane => pane.classList.remove('active'));
+
+      const tabs = document.querySelectorAll('.nav-tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      // 2. Activate requested pane
+      const targetPane = document.getElementById('tab-' + tabName);
+      if (targetPane) {
+        targetPane.classList.add('active');
+      }
+
+      // 3. Highlight requested tab button
+      const targetTab = document.querySelector(`.nav-tab[data-tab="${tabName}"]`);
+      if (targetTab) {
+        targetTab.classList.add('active');
+      }
+
+      // 4. Update document title
+      const tabTitleMap = {
+        portfolio: 'Projects',
+        experience: 'Experience',
+        publications: 'Publications & Reports',
+        teaching: 'Teaching',
+        cv: 'CV'
+      };
+      if (tabTitleMap[tabName]) {
+        document.title = 'Rohit Gupta | ' + tabTitleMap[tabName];
+      }
+
+      // Smooth scroll back to top on mobile view
+      if (window.innerWidth < 900) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  </script>
+</body>
+</html>
